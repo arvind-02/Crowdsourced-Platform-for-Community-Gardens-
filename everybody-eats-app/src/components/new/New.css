@@ -1,0 +1,19 @@
+.newForm {
+    display: flex;
+    flex-direction: column;
+    max-width: 30%;
+}
+
+.newForm .gardenFormField {
+    margin-bottom: 10px;
+}
+
+.newForm textarea {
+    padding: .78571429em 1em;
+    border: 1px solid rgba(34,36,38,.15);
+    border-radius: .28571429rem;
+}
+
+.newForm ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(199,199,199);
+}
