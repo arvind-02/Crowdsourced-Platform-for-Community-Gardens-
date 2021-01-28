@@ -1,0 +1,4 @@
+{
+    "route": "/*",
+    "serve": "/calendar.html"
+  }

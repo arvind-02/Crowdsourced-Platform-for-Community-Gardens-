@@ -125,7 +125,7 @@ const Map = () => {
                             <h4>Garden Address</h4>
                             <p>{currentGarden.ADDRESS}</p>
                             <h4>Description</h4>
-                            <p>{currentGarden.DESCRIPTION}</p>
+                            <p>{currentGarden.DESCRIPTION.replaceAll("%0A", "\n")}</p>
                             <p><strong>Please contact {currentGarden.EMAIL} for more information</strong></p>
                         </div>
                         <div className="col-8 imageCol">
