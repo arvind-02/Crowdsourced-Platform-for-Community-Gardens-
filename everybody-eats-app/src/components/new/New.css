@@ -22,3 +22,33 @@
     margin-top: 10px !important;
     text-align: center;
 }
+
+.newForm .filePicker {
+    display: none !important;
+}
+
+.newForm .fileLabel {
+    padding: .78571429em 1em;
+    border-radius: .28571429rem;
+    background-color: #29339B;
+    color: #FFF8F0;
+    font-weight: bold;
+    border: 0px;
+}
+
+.newForm .fileLabel:hover {
+    background-color: #658E9C;
+}
+
+.newForm .submitButton {
+    background-color: #06A77D;
+    color: #FFF8F0;
+    font-weight: bold;
+    padding: .78571429em 1em;
+    border-radius: .28571429rem;
+    border: 0px;
+}
+
+.newForm .submitButton:hover {
+    background-color: #F1A208;
+}

@@ -1,9 +1,11 @@
 import './Map.css'
 import { useEffect, useMemo, useState } from 'react';
+import { Loader } from 'semantic-ui-react';
 
 const Map = () => {
     const [gardens, setGardens] = useState([]);
     const [currentGarden, setCurrentGarden] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     const atlantaConfig = useMemo(() => ({
         "center": [-84.3880, 33.7490], zoom: 10, view: 'Auto',
@@ -15,19 +17,22 @@ const Map = () => {
 
     useEffect(() => {
         const getGardens = async () => {
+            setLoading(true);
             try {
                 let response = await fetch(`/api/garden-get`);
                 let json = await response.json();
                 setGardens(json);
             } catch (err) {
+                setLoading(false);
                 console.log(err);
             }
         }
         getGardens();
-    }, [setGardens]);
+    }, [setGardens, setLoading]);
 
     useEffect(() => {
         const createMap = () => {
+            setLoading(true);
             var map = new window.atlas.Map("map", {
                 center: atlantaConfig.center,
                 zoom: atlantaConfig.zoom,
@@ -71,17 +76,17 @@ const Map = () => {
                         }
                     }
                 });
+                setLoading(false);
             })
         }
         createMap();
-    }, [gardens, setCurrentGarden, atlantaConfig]);
+    }, [gardens, setCurrentGarden, atlantaConfig, setLoading]);
 
     return (
         <div className="mapPage">
-            <div id="map">
-
-            </div>
+            <div id="map"></div>
             <div className="gardenInfo">
+                {loading ? <div className="loadingDiv"><Loader active inline /></div> : null}
                 {(currentGarden) ? (
                     <div className="row">
                         <div className="col-4">
