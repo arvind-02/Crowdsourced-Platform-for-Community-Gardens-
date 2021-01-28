@@ -34,6 +34,7 @@ module.exports = function (context, req) {
 
         request.on('row', columns => {
             currentData[columns[1].value.trim()] = {};
+            context.log(columns[1].value.trim());
             columns.map((val, idx) => {
                 currentData[columns[1].value.trim()][fields[idx]] = val.value;
             })

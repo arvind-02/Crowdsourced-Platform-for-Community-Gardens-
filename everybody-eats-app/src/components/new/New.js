@@ -10,6 +10,17 @@ const New = (props) => {
     const [description, setDescription] = useState("");
     const [error, setError] = useState("");
 
+    const atlantaConfig = useMemo(() => ({
+        "center": [-84.3880, 33.7490], zoom: 10, view: 'Auto',
+        "authOptions": {
+            "authType": "subscriptionKey",
+            "subscriptionKey": "oJw5kVebBOggGf15Sn_CLR3jIN7xQrQulnRC7567uVc"
+        }
+    }), []);
+    var subscriptionKeyCredential = new window.atlas.service.SubscriptionKeyCredential(atlantaConfig.authOptions.subscriptionKey);
+    var pipeline = window.atlas.service.MapsURL.newPipeline(subscriptionKeyCredential);
+    var searchURL = useMemo(() => new window.atlas.service.SearchURL(pipeline), [pipeline]);
+
     const submit = (e) => {
         e.preventDefault();
         if (selectedFile === "" || name === "" || address === "" || email === "" || description === "") {
@@ -23,6 +34,7 @@ const New = (props) => {
         var formAddress = address;
         var formEmail = email;
         var formDescription = description;
+        var coordinates = [];
         formData.append("path", selectedFile, `name: ${formName}%# address: ${formAddress}%# email: ${formEmail}%# description: ${formDescription}`);
         console.log(`name: ${formName}%# address: ${formAddress}%# email: ${formEmail}%# description: ${formDescription}`)
         fetch(`/api/garden-post`, {
