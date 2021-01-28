@@ -54,12 +54,17 @@ const Map = () => {
             map.events.add('ready', () => {
                 map.sources.add(datasource);
                 map.layers.add(resultLayer);
+                var gardenLen = 0;
                 for (var gardenName in gardens) {
+                    gardenLen++;
                     var garden = gardens[gardenName]
                     var point = new window.atlas.data.Feature(new window.atlas.data.Point([garden.XCOORD, garden.YCOORD]), {
                         name: garden.NAME
                     });
                     datasource.add(point);
+                }
+                if (gardenLen > 0) {
+                    setLoading(false);
                 }
                 map.events.add('click', resultLayer, function (e) {
                     if (e.shapes && e.shapes.length > 0) {
@@ -76,7 +81,6 @@ const Map = () => {
                         }
                     }
                 });
-                setLoading(false);
             })
         }
         createMap();
