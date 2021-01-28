@@ -1,0 +1,19 @@
+{
+    "routes": [
+      {
+        "route": "/",
+        "serve": "/index.html",
+        "status": 200
+      },
+      {
+        "route": "/map",
+        "serve": "/index.html",
+        "status": 200
+      },
+      {
+        "route": "/new",
+        "serve": "/index.html",
+        "status": 200
+      }
+    ]
+  }

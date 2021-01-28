@@ -31,6 +31,8 @@ module.exports = function (context, req) {
         const address = parts[0].filename.split(SPLIT_CHAR)[1].split('address: ')[1];
         const email = parts[0].filename.split(SPLIT_CHAR)[2].split('email: ')[1];
         const description = parts[0].filename.split(SPLIT_CHAR)[3].split('description: ')[1];
+        const xCoord = parseFloat(parts[0].filename.split(SPLIT_CHAR)[4].split('xCoord: ')[1]);
+        const yCoord = parseFloat(parts[0].filename.split(SPLIT_CHAR)[5].split('yCoord: ')[1]);
         var buffer = parts[0].data;
         var stream = new Readable();
         stream.push(buffer);
@@ -50,8 +52,8 @@ module.exports = function (context, req) {
         try {
             await blockBlobClient.uploadStream(stream, uploadOptions.bufferSize, uploadOptions.maxBuffers,
                 { blobHTTPHeaders: { blobContentType: parts[0].type } });
-            context.log(`INSERT INTO gardens(name, address, email, description, imageURL) VALUES('${name}', '${address}', '${email}', '${description}', '${blockBlobClient.url}');`);
-            request = new Request(`INSERT INTO gardens(name, address, email, description, imageURL) VALUES('${name}', '${address}', '${email}', '${description}', '${blockBlobClient.url}');`, err => {
+            context.log(`INSERT INTO gardens(name, address, email, description, xCoord, yCoord, imageURL) VALUES('${name}', '${address}', '${email}', '${description}', '${xCoord}', '${yCoord}', '${blockBlobClient.url}');`);
+            request = new Request(`INSERT INTO gardens(name, address, email, description, xCoord, yCoord, imageURL) VALUES('${name}', '${address}', '${email}', '${description}', '${xCoord}', '${yCoord}', '${blockBlobClient.url}');`, err => {
                 if (err) {
                     context.log(err);
                     context.res = {

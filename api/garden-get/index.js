@@ -3,7 +3,7 @@ const { config } = require('../constants/constants');
 
 module.exports = function (context, req) {
     var currentData = {};
-    const fields = ["ID", "NAME", "ADDRESS", "EMAIL", "DESCRIPTION", "IMAGE_URL"]
+    const fields = ["ID", "NAME", "ADDRESS", "EMAIL", "DESCRIPTION", "XCOORD", "YCOORD", "IMAGE_URL"]
     const connection = new Connection(config);
 
     connection.connect(err => {
