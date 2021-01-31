@@ -3,7 +3,7 @@ const Home = () => {
         <div>
             <h1 style={{ textAlign: 'center', fontSize: 'xx-large', color: '#663300' }}>Making Sure Everybody Eats!</h1>
             <p style={{ marginLeft: '25%', marginRight: '25%', fontSize: 'large', fontStyle: 'italic' }}>
-                <br></br> Thank you for taking the time to learn about our website! We are a group of students passionate about helping others find healthier food options.
+                <br></br> Thank you for taking the time to learn about our website! We are a group of students from Stanford and Yale passionate about helping others find healthier food options.
                     We feel that community gardens are some of the most underrated sources of fresh and nutritious foods.<br></br>
             </p>
             <p style={{ marginLeft: '25%', marginRight: '25%', fontSize: 'large' }}> <br></br>To find and learn about community gardens near you, please visit the "Map" tab. <br></br><br></br>To add a community garden to the map, please visit the "New" tab. We appreciate all contributions!</p>
