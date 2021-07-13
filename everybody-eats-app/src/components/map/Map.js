@@ -11,7 +11,7 @@ const Map = () => {
         "center": [-84.3880, 33.7490], zoom: 10, view: 'Auto',
         "authOptions": {
             "authType": "subscriptionKey",
-            "subscriptionKey": "oJw5kVebBOggGf15Sn_CLR3jIN7xQrQulnRC7567uVc"
+            "subscriptionKey": ""
         }
     }), []);
 
